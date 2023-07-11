@@ -14,4 +14,7 @@ public class BaseballGame {
     }
 
 
+    public boolean checkUserInput(String userInput) {
+          
+    }
 }
