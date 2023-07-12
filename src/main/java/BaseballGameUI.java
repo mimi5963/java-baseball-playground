@@ -7,10 +7,12 @@ public class BaseballGameUI {
    private void setNewGame(){
         baseballGame = new BaseballGame();
     }
-    public void gameStart(){
+    public void newGameStart(){
         boolean continueGame =true;
+
         while(continueGame) {
             setNewGame();
+            System.out.println(baseballGame.getRandomNumber());
             palyGame();
             continueGame = continueOrNot();
         }
@@ -33,9 +35,43 @@ public class BaseballGameUI {
        Scanner sc = new Scanner(System.in);
         while(!threeStrike){
             System.out.print("숫자를 입력해 주세요 :");
-            userInput = sc.nextLine();
-            threeStrike =baseballGame.checkUserInput(userInput);
+            userInput = baseballGame.getuserInput();
+                    //sc.nextLine();
+            //BaseballGame.userInputcheck(userInput);
+            threeStrike =isThreeStrike(baseballGame.checkBallAndStrike(userInput));
         }
+    }
+
+
+
+    private boolean isThreeStrike(int[] ballAndStrike) {
+       if(ballAndStrike[0] == 3) {
+           System.out.println("3 strike");
+           return true;
+       }
+
+       printBallAndStrike(ballAndStrike);
+
+           return false;
+    }
+
+    private void printBallAndStrike(int[] ballAndStrike) {
+       if(ballAndStrike[0] >0 && ballAndStrike[1]==0)
+       {
+           System.out.println(ballAndStrike[0]+"스트라이크");
+           return;
+       }
+       if(ballAndStrike[0] == 0 && ballAndStrike[1] >0){
+           System.out.println(ballAndStrike[1]+"볼");
+           return;
+       }
+       if(ballAndStrike[0]==0 && ballAndStrike[1] ==0){
+           System.out.println("nothing");
+           return;
+       }
+
+       System.out.println(ballAndStrike[1]+"볼 "+ballAndStrike[1]+"스트라이크");
+
     }
 
 

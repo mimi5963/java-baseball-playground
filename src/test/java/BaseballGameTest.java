@@ -21,7 +21,14 @@ class BaseballGameTest {
         newgame = new BaseballGame();
 
     }
+    @ParameterizedTest
+    @CsvSource({"123,false","222,true","456,false"})
+    void duplicatedTest(String input, String result){
+        boolean results = Boolean.parseBoolean(result);
+        boolean metodresult = newgame.duplicated(input);
+       assertEquals(results,metodresult);
 
+    }
     @Test
     void testNumberOf(){
         String num = newgame.getRandomNumber();
@@ -57,7 +64,7 @@ class BaseballGameTest {
         setResult(0,true,t);
 
     }
-    
+
   private int[] ballAndStrikeTest(String computer, String user){
         int idx;
         boolean isStrike=false;
