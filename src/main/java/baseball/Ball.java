@@ -3,18 +3,18 @@ package baseball;
 import java.util.*;
 
 public class Ball {
-    private final int ballNo;
+    private final BallNumber ballNo;
     private final int position;
     public Ball(int position, int ballNo) {
         this.position = position;
-        this.ballNo = ballNo;
+        this.ballNo = new BallNumber(ballNo);
     }
 
     public BallStatus play(Ball ball) {
         if(this.equals(ball)){
             return BallStatus.STRIKE;
         }
-        if(ball.matchBallNumber(ballNo)) {
+        if(ball.matchBallNumber(ballNo.getNumber())) {
             return BallStatus.BALL;
         }
         return BallStatus.NOTHING;
@@ -24,7 +24,7 @@ public class Ball {
     }
 
     private boolean matchBallNumber(int ballNo) {
-        return this.ballNo == ballNo;
+        return this.ballNo.getNumber() == ballNo;
         //이런식으로 짜는게 좋대.. 직접접근하지말고
         //객체에 인스턴스 변수 직접 접근보단 해당 객체 (여기선 ball)
         //메시지 보내는 형식 사용하는게 좋다
