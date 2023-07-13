@@ -19,6 +19,7 @@ public class ValidationUtilsTest {
         assertThat(ValidationUtils.validNo(10)).isFalse();
 
         //TDD연습하기 좋은 것은 알고리즘들! 그리고 유틸성 클래스 메서드들
+
     }
 
 

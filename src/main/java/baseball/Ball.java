@@ -1,6 +1,6 @@
 package baseball;
 
-import java.util.Objects;
+import java.util.*;
 
 public class Ball {
     private final int ballNo;
@@ -18,6 +18,9 @@ public class Ball {
             return BallStatus.BALL;
         }
         return BallStatus.NOTHING;
+
+
+
     }
 
     private boolean matchBallNumber(int ballNo) {
