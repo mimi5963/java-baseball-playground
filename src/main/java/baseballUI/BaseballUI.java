@@ -3,6 +3,7 @@ package baseballUI;
 import baseball.Balls;
 import baseball.GameStatus;
 import baseball.InputConverter;
+import baseball.Validation;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -80,9 +81,22 @@ public class BaseballUI {
     private List<Integer> getuserInput() {
         List<Integer> temp = new ArrayList<>();
         Scanner sc =new Scanner(System.in);
-        System.out.print("숫자를 입력해 주세요: ");
-        String input =sc.nextLine();
-        temp = InputConverter.convert(input);
+        boolean isDuplicated;
+
+        do {
+            System.out.print("숫자를 중복 없이 입력해 주세요: ");
+            String input = sc.nextLine();
+            temp = InputConverter.convert(input);
+            isDuplicated = isduplicatednumber(temp);
+        }while (isDuplicated);
         return temp;
+    }
+
+    private boolean isduplicatednumber(List<Integer> temp) {
+        if(Validation.isduplicateNumbers2(temp)){
+            System.out.println("중복된 숫자입니다. 다시 입력해주세요");
+            return true;
+        }
+        return false;
     }
 }

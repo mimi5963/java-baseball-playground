@@ -19,7 +19,7 @@ public class Validation {
     }
 
     public static <T> void isduplicateNumbers(List<T> numbserList) {
-        boolean result = true;
+
         Set<T> testSet = new HashSet<>(numbserList);
         if(testSet.size() != numbserList.size())
         {
@@ -31,5 +31,14 @@ public class Validation {
     public static boolean isThreeinput(String s) {
 
         return s.length() == VAILDAT_INPUT_NUM;
+    }
+
+    public static <T>  boolean isduplicateNumbers2(List<T> numbserList) {
+        Set<T> testSet = new HashSet<>(numbserList);
+        if(testSet.size() != numbserList.size())
+        {
+            return true;
+        }
+        return false;
     }
 }
